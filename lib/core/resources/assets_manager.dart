@@ -32,6 +32,10 @@ abstract final class AssetsManager {
 
 
   static const radioBack = "assets/images/Radio/Background.png";
+  static const radioPlay = "assets/images/radio/play.png";
+  static const radioStop = "assets/images/radio/stop.png";
+
+
 
 
 

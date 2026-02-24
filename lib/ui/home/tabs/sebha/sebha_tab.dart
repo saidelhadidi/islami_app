@@ -63,10 +63,12 @@ class _SebhaTabState extends State<SebhaTab> {
               onTap: (){
                 setState(() {
                   counter=0;
+                  turns=0;
                 });
               },
               onDoubleTap: (){setState(() {
                 counter=0;
+                turns=0;
                if(currentIndex==AzkarData.azkar.length-1){
                  currentIndex=0;
                }else{

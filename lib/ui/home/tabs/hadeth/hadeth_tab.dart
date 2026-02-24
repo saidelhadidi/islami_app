@@ -27,6 +27,10 @@ class HadethTab extends StatelessWidget {
                       .map((model) => HadethItem(hadeth: model))
                       .toList(),
                   options: CarouselOptions(
+                    autoPlay: true,
+                    autoPlayInterval: Duration(seconds: 3),
+                    autoPlayAnimationDuration: Duration(milliseconds: 800),
+                    autoPlayCurve: Curves.fastOutSlowIn,
                     aspectRatio: 0.7,
                     enlargeCenterPage: true,
                     viewportFraction: 0.75,
