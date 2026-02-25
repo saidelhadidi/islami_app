@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:islami_app/core/resources/assets_manager.dart';
 import 'package:islami_app/core/resources/colors_manager.dart';
 
-import '../../../core/resources/size_managers.dart';
+import '../../../core/resources/size_manager.dart';
 
 class RadioItem extends StatelessWidget {
   const RadioItem({
@@ -22,7 +22,7 @@ class RadioItem extends StatelessWidget {
       borderRadius: BorderRadius.circular(20),
       child: Container(
         width: double.infinity,
-        height: SizeManagers.getScreenHeight(context) * 0.14,
+        height: SizeManager.getScreenHeight(context) * 0.14,
         decoration: BoxDecoration(
           color: ColorsManager.gold,
           borderRadius: BorderRadius.circular(20),

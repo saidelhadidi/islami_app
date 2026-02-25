@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:islami_app/core/resources/assets_manager.dart';
 import 'package:islami_app/core/resources/colors_manager.dart';
-import 'package:islami_app/core/resources/size_managers.dart';
+import 'package:islami_app/core/resources/size_manager.dart';
 import 'package:islami_app/core/reusable_components/header_image.dart';
 import 'package:islami_app/model/azkar_data.dart';
 
@@ -45,8 +45,8 @@ class _SebhaTabState extends State<SebhaTab> {
         children: [
           HeaderImage(),
           SizedBox(
-            height: SizeManagers.getScreenHeight(context) * 0.1,
-            width: SizeManagers.getScreenHeight(context) * 0.8,
+            height: SizeManager.getScreenHeight(context) * 0.1,
+            width: SizeManager.getScreenHeight(context) * 0.8,
             child: Center(
               child: Text(
                 "سَبِّحِ اسْمَ رَبِّكَ الأعلى ",

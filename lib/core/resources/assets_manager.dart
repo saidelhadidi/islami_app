@@ -40,6 +40,13 @@ abstract final class AssetsManager {
 
 
   static const timeBack = "assets/images/time/Background.png";
+  static const eveningZikr = "assets/images/time/evening.png";
+  static const morningZikr = "assets/images/time/morning.png";
+  static const sleepingZikr = "assets/images/time/sleeping.png";
+  static const wakingZikr = "assets/images/time/waking.png";
+  static const prayingTimeBackGround = "assets/images/time/prayingTimeBackground.png";
+
+
 
 
 

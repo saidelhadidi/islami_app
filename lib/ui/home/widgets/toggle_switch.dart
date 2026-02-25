@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/resources/colors_manager.dart';
-import '../../../core/resources/size_managers.dart';
+import '../../../core/resources/size_manager.dart';
 
 class ToggleSwitch extends StatelessWidget {
   const ToggleSwitch({super.key, required this.isRadioSelected, required this.onTab});
@@ -11,7 +11,7 @@ class ToggleSwitch extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: SizeManagers.getScreenHeight(context) * 0.04,
+      height: SizeManager.getScreenHeight(context) * 0.04,
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
