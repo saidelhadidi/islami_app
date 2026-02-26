@@ -32,7 +32,7 @@ class PrayingTimeCard extends StatelessWidget {
                 width: double.infinity,
                 height: constraints.maxHeight * 0.24,
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 8,right: 8,left: 8),
+                  padding: const EdgeInsets.only(right: 8,left: 8),
                   child: Stack(
                     children: [
                       Positioned(
@@ -42,7 +42,7 @@ class PrayingTimeCard extends StatelessWidget {
                           textAlign: TextAlign.center,
                           "16 Jul,\n2024",
                           style: TextStyle(
-                            fontSize: 16,
+                            fontSize: 12,
                             fontWeight: FontWeight.bold,
                             color: ColorsManager.white,
                           ),
@@ -52,29 +52,32 @@ class PrayingTimeCard extends StatelessWidget {
                         alignment: Alignment.topCenter,
                         child: DefaultTextStyle(
                           style: TextStyle(
-                            fontSize: 20,
+                            fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
-                          child: Column(
-                            spacing: 5,
-                            children: [
-                              Text(
-                                "Pray Time",
-                                style: TextStyle(
-                                  color: ColorsManager.brown.withValues(
-                                    alpha: 0.7,
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 5),
+                            child: Column(
+                              spacing: 2,
+                              children: [
+                                Text(
+                                  "Pray Time",
+                                  style: TextStyle(
+                                    color: ColorsManager.brown.withValues(
+                                      alpha: 0.7,
+                                    ),
                                   ),
                                 ),
-                              ),
-                              Text(
-                                "Sunday",
-                                style: TextStyle(
-                                  color: ColorsManager.brown.withValues(
-                                    alpha: 0.9,
+                                Text(
+                                  "Sunday",
+                                  style: TextStyle(
+                                    color: ColorsManager.brown.withValues(
+                                      alpha: 0.9,
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -85,7 +88,7 @@ class PrayingTimeCard extends StatelessWidget {
                           textAlign: TextAlign.center,
                           "09 Muh,\n1446",
                           style: TextStyle(
-                            fontSize: 16,
+                            fontSize: 12,
                             fontWeight: FontWeight.bold,
                             color: ColorsManager.white,
                           ),
