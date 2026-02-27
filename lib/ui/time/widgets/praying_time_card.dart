@@ -32,7 +32,7 @@ class PrayingTimeCard extends StatelessWidget {
                 width: double.infinity,
                 height: constraints.maxHeight * 0.24,
                 child: Padding(
-                  padding: const EdgeInsets.only(right: 8,left: 8),
+                  padding: const EdgeInsets.only(right: 8, left: 8),
                   child: Stack(
                     children: [
                       Positioned(
@@ -42,7 +42,7 @@ class PrayingTimeCard extends StatelessWidget {
                           textAlign: TextAlign.center,
                           "16 Jul,\n2024",
                           style: TextStyle(
-                            fontSize: 12,
+                            fontSize: constraints.maxWidth * 0.04,
                             fontWeight: FontWeight.bold,
                             color: ColorsManager.white,
                           ),
@@ -52,7 +52,7 @@ class PrayingTimeCard extends StatelessWidget {
                         alignment: Alignment.topCenter,
                         child: DefaultTextStyle(
                           style: TextStyle(
-                            fontSize: 18,
+                            fontSize: constraints.maxWidth * 0.055,
                             fontWeight: FontWeight.bold,
                           ),
                           child: Padding(
@@ -88,7 +88,7 @@ class PrayingTimeCard extends StatelessWidget {
                           textAlign: TextAlign.center,
                           "09 Muh,\n1446",
                           style: TextStyle(
-                            fontSize: 12,
+                            fontSize: constraints.maxWidth * 0.04,
                             fontWeight: FontWeight.bold,
                             color: ColorsManager.white,
                           ),
@@ -101,14 +101,11 @@ class PrayingTimeCard extends StatelessWidget {
               Spacer(),
               CarouselSlider.builder(
                 itemCount: PrayerData.prayers.length,
-                itemBuilder:
-                    (BuildContext context, int index, int realIndex) {
-                      return PrayerTimeItem(
-                        prayer: PrayerData.prayers[index],
-                      );
-                    },
+                itemBuilder: (BuildContext context, int index, int realIndex) {
+                  return PrayerTimeItem(prayer: PrayerData.prayers[index]);
+                },
                 options: CarouselOptions(
-                  height: constraints.maxHeight*0.5,
+                  height: constraints.maxHeight * 0.5,
                   viewportFraction: 0.28,
                   enlargeCenterPage: true,
                   enlargeStrategy: CenterPageEnlargeStrategy.zoom,
@@ -145,7 +142,7 @@ class PrayingTimeCard extends StatelessWidget {
                                   alpha: 0.7,
                                 ),
                                 fontWeight: FontWeight.bold,
-                                fontSize: 16,
+                                fontSize: constraints.maxWidth * 0.04,
                               ),
                             ),
                             TextSpan(
@@ -155,7 +152,7 @@ class PrayingTimeCard extends StatelessWidget {
                                   alpha: 0.9,
                                 ),
                                 fontWeight: FontWeight.bold,
-                                fontSize: 16,
+                                fontSize: constraints.maxWidth * 0.04,
                               ),
                             ),
                           ],

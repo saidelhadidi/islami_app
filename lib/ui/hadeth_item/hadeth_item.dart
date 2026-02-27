@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:islami_app/core/resources/assets_manager.dart';
 import 'package:islami_app/core/resources/colors_manager.dart';
+import 'package:islami_app/core/resources/size_manager.dart';
 import 'package:islami_app/model/hadeth_model.dart';
 import 'package:islami_app/ui/hadeth_item/hadeth_details.dart';
 
@@ -13,7 +14,11 @@ class HadethItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(context, HadethDetails.routeName,arguments: hadeth);
+        Navigator.pushNamed(
+          context,
+          HadethDetails.routeName,
+          arguments: hadeth,
+        );
       },
       child: Container(
         decoration: BoxDecoration(
@@ -23,32 +28,50 @@ class HadethItem extends StatelessWidget {
 
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 8, right: 8, left: 8),
-              child: Row(
-                children: [
-                  Image.asset(
-                    AssetsManager.leftCorner,
-                    color: ColorsManager.black,
-                  ),
-
-                  Expanded(
-                    child: Text(
-                      textAlign: TextAlign.center,
-                      hadeth.title,
-                      style: TextStyle(
-                        color: ColorsManager.brown,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
+            Stack(
+              alignment: Alignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 8, right: 8, left: 8),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Image.asset(
+                        AssetsManager.leftCorner,
+                        color: ColorsManager.black,
                       ),
+
+                      // Expanded(
+                      //   child: Text(
+                      //     textAlign: TextAlign.center,
+                      //     hadeth.title,
+                      //     style: TextStyle(
+                      //       color: ColorsManager.brown,
+                      //       fontSize: 20,
+                      //       fontWeight: FontWeight.bold,
+                      //     ),
+                      //   ),
+                      // ),
+                      Image.asset(
+                        AssetsManager.rightCorner,
+                        color: ColorsManager.black,
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  width: SizeManager.getScreenWidth(context) * 0.5,
+                  child: Text(
+                    textAlign: TextAlign.center,
+                    hadeth.title,
+                    style: TextStyle(
+                      color: ColorsManager.brown,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Image.asset(
-                    AssetsManager.rightCorner,
-                    color: ColorsManager.black,
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
             Expanded(
               child: Stack(
@@ -85,7 +108,6 @@ class HadethItem extends StatelessWidget {
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                             color: ColorsManager.brown,
-
                           ),
                         ),
                       ),

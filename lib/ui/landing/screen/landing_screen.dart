@@ -24,108 +24,110 @@ class _LandingScreenState extends State<LandingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorsManager.brown,
-      body: Column(
-        children: [
-          HeaderImage(),
-          Expanded(
-            child: PageView.builder(
-              controller: pageController,
-              itemBuilder: (context, index) {
-                return LandingItem(screenDate: LandingData.landingPages[index]);
-              },
-              itemCount: LandingData.landingPages.length,
-              onPageChanged: (int index) {
-                setState(() {
-                  currentIndex = index;
-                });
-              },
+      body: SafeArea(
+        child: Column(
+          children: [
+            HeaderImage(),
+            Expanded(
+              child: PageView.builder(
+                controller: pageController,
+                itemBuilder: (context, index) {
+                  return LandingItem(screenDate: LandingData.landingPages[index]);
+                },
+                itemCount: LandingData.landingPages.length,
+                onPageChanged: (int index) {
+                  setState(() {
+                    currentIndex = index;
+                  });
+                },
+              ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                TextButton(
-                  style: ButtonStyle(
-                    overlayColor: WidgetStateProperty.resolveWith((states) {
-                      if (states.contains(WidgetState.pressed)) {
-                        return ColorsManager.gold.withValues(alpha: 0.2);
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  TextButton(
+                    style: ButtonStyle(
+                      overlayColor: WidgetStateProperty.resolveWith((states) {
+                        if (states.contains(WidgetState.pressed)) {
+                          return ColorsManager.gold.withValues(alpha: 0.2);
+                        }
+                        return null;
+                      }),
+                    ),
+                    onPressed: () async {
+                      if (currentIndex > 0) {
+                        pageController.previousPage(
+                          duration: Duration(milliseconds: 500),
+                          curve: Curves.easeInOut,
+                        );
+                      } else {
+                        Navigator.pushReplacementNamed(
+                          context,
+                          HomeScreen.routeName,
+                        );
+                        SharedPreferences prefs =
+                            await SharedPreferences.getInstance();
+                        await prefs.setBool('isFirstTime', false);
                       }
-                      return null;
-                    }),
-                  ),
-                  onPressed: () async {
-                    if (currentIndex > 0) {
-                      pageController.previousPage(
-                        duration: Duration(milliseconds: 500),
-                        curve: Curves.easeInOut,
-                      );
-                    } else {
-                      Navigator.pushReplacementNamed(
-                        context,
-                        HomeScreen.routeName,
-                      );
-                      SharedPreferences prefs =
-                          await SharedPreferences.getInstance();
-                      await prefs.setBool('isFirstTime', false);
-                    }
-                  },
-                  child: Text(
-                    currentIndex > 0 ? "Back" : "Skip",
-                    style: TextStyle(
-                      color: ColorsManager.gold,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
+                    },
+                    child: Text(
+                      currentIndex > 0 ? "Back" : "Skip",
+                      style: TextStyle(
+                        color: ColorsManager.gold,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                      ),
                     ),
                   ),
-                ),
-                SmoothPageIndicator(
-                  controller: pageController,
-                  count: LandingData.landingPages.length,
-                  effect: WormEffect(activeDotColor: ColorsManager.gold),
-                ),
-                TextButton(
-                  style: ButtonStyle(
-                    overlayColor: WidgetStateProperty.resolveWith((states) {
-                      if (states.contains(WidgetState.pressed)) {
-                        return ColorsManager.gold.withValues(alpha: 0.2);
-                      }
-                      return null;
-                    }),
+                  SmoothPageIndicator(
+                    controller: pageController,
+                    count: LandingData.landingPages.length,
+                    effect: WormEffect(activeDotColor: ColorsManager.gold),
                   ),
+                  TextButton(
+                    style: ButtonStyle(
+                      overlayColor: WidgetStateProperty.resolveWith((states) {
+                        if (states.contains(WidgetState.pressed)) {
+                          return ColorsManager.gold.withValues(alpha: 0.2);
+                        }
+                        return null;
+                      }),
+                    ),
 
-                  onPressed: () async {
-                    if (currentIndex < LandingData.landingPages.length - 1) {
-                      pageController.nextPage(
-                        duration: Duration(milliseconds: 500),
-                        curve: Curves.easeInOut,
-                      );
-                    } else {
-                      Navigator.pushReplacementNamed(
-                        context,
-                        HomeScreen.routeName,
-                      );
-                      SharedPreferences prefs =
-                          await SharedPreferences.getInstance();
-                      await prefs.setBool('isFirstTime', false);
-                    }
-                  },
-                  child: Text(
-                    currentIndex == LandingData.landingPages.length - 1
-                        ? "Finish"
-                        : "Next",
-                    style: TextStyle(
-                      color: ColorsManager.gold,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
+                    onPressed: () async {
+                      if (currentIndex < LandingData.landingPages.length - 1) {
+                        pageController.nextPage(
+                          duration: Duration(milliseconds: 500),
+                          curve: Curves.easeInOut,
+                        );
+                      } else {
+                        Navigator.pushReplacementNamed(
+                          context,
+                          HomeScreen.routeName,
+                        );
+                        SharedPreferences prefs =
+                            await SharedPreferences.getInstance();
+                        await prefs.setBool('isFirstTime', false);
+                      }
+                    },
+                    child: Text(
+                      currentIndex == LandingData.landingPages.length - 1
+                          ? "Finish"
+                          : "Next",
+                      style: TextStyle(
+                        color: ColorsManager.gold,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
